@@ -8,6 +8,7 @@ use App\Models\Item;
 use App\Models\StockIn;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 
 class StockInController extends Controller
 {
@@ -44,7 +45,7 @@ class StockInController extends Controller
         ]);
 
         DB::transaction(function () use ($data) {
-            $items = DB::table('items')->lockForUpdate()->findOrFail('item_id', $data['item_id']);
+            $items = Item::lockForUpdate()->findOrFail($data['item_id']);
             $items->increment('quantity', $data['quantity']);
             StockIn::create($data);
         });

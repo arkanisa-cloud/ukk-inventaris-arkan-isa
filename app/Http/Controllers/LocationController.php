@@ -43,7 +43,7 @@ class LocationController extends Controller
      */
     public function edit(Location $location)
     {
-        return view('locations.edit');
+        return view('locations.edit', compact('location'));
     }
 
     /**
@@ -65,7 +65,7 @@ class LocationController extends Controller
      */
     public function destroy(Location $location)
     {
-        if($location->item()->exists())
+        if($location->items()->exists())
             {
                 return redirect()->route('locations.index')->with('error', 'Data lokasi tidak dapat dihapus karena masih memiliki barang aktif!');
             }

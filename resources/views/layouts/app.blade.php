@@ -13,11 +13,11 @@
         <nav class="mx-auto flex max-w-5xl flex-wrap items-center gap-4 p-4" aria-label="Navigasi utama">
             <strong>Logistix</strong>
             <a href="{{ route('categories.index') }}" class="text-blue-700 hover:underline">Kategori</a>
-            {{-- <a href="{{ route('locations.index') }}" class="text-blue-700 hover:underline">Lokasi</a>
+            <a href="{{ route('locations.index') }}" class="text-blue-700 hover:underline">Lokasi</a>
             <a href="{{ route('items.index') }}" class="text-blue-700 hover:underline">Barang</a>
             <a href="{{ route('stock-ins.index') }}" class="text-blue-700 hover:underline">Stok Masuk</a>
             <a href="{{ route('stock-outs.index') }}" class="text-blue-700 hover:underline">Stok Keluar</a>
-            <a href="{{ route('reports.index') }}" class="text-blue-700 hover:underline">Rekap</a> --}}
+            {{-- <a href="{{ route('reports.index') }}" class="text-blue-700 hover:underline">Rekap</a> --}}
         </nav>
     </header>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Item;
+use App\Models\Location;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -50,7 +51,9 @@ class ItemController extends Controller
      */
     public function create()
     {
-        return view('items.create');
+        $categories = Category::all();
+        $locations = Location::all();
+        return view('items.create', compact('categories', 'locations'));
     }
 
     /**
@@ -61,14 +64,14 @@ class ItemController extends Controller
         $data = $request->validate([
             'name' => 'required|string|max:255|unique:items,name',
             'category_id' => 'required|integer|exists:categories,id',
-            'location_id' => 'required|integer|exists:location,id',
+            'location_id' => 'required|integer|exists:locations,id',
             'condition' => 'required|in:baik,rusak_ringan,rusak_berat'
         ]);
 
         DB::transaction(function () use($data) {
             $sequence = DB::table('item_code_sequences')->lockForUpdate()->first();
             $nextNumber = $sequence->last_number + 1;
-            $data['code'] = 'SMK-' . str_pad((string) 3, '0', STR_PAD_LEFT);
+            $data['code'] = 'SMK-' . str_pad((string) $nextNumber, 3, '0', STR_PAD_LEFT);
 
             Item::create($data);
 
@@ -92,7 +95,7 @@ class ItemController extends Controller
     public function update(Request $request, Item $item)
     {
         $data = $request->validate([
-            'name' => 'required|string|max:255|unique:items,name,' . $item->name,
+            'name' => 'required|string|max:255|unique:items,name,' . $item->id,
             'category_id' => 'required|integer|exists:categories,id',
             'location_id' => 'required|integer|exists:location,id',
             'condition' => 'required|in:baik,rusak_ringan,rusak_berat'

@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Judul Form')
+@section('title', 'Tambah Kategori')
 
 @section('content')
-    <h1 class="text-2xl font-bold tracking-tight text-slate-900">Judul Form</h1>
+    <h1 class="text-2xl font-bold tracking-tight text-slate-900">Tambah Kategori</h1>
 
     <form action="{{ route('categories.store') }}" method="POST"
         class="flex w-full max-w-2xl flex-col gap-5 rounded-xl border border-slate-200 bg-white p-5 shadow-sm md:p-6">
@@ -18,7 +18,7 @@
         <div class="flex flex-col gap-2">
             <label class="text-sm font-medium text-slate-700" for="description">Deskripsi</label>
             <textarea id="description" name="description" rows="3"
-                class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm focus:outline-2 focus:outline-blue-600">{{ old('description', $categoriess->description ?? '') }}</textarea>
+                class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm focus:outline-2 focus:outline-blue-600">{{ old('description', $categories->description ?? '') }}</textarea>
         </div>
 
         <div class="flex flex-wrap items-center gap-4">

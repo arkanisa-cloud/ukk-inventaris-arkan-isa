@@ -24,18 +24,18 @@
                         <td class="px-5 py-4">{{ $category->id }}</td>
                         <td class="px-5 py-4">{{ $category->name }}</td>
                         <td class="px-5 py-4">{{ $category->description ?? '-' }}</td>
-                        {{-- <td class="px-5 py-4">
+                        <td class="px-5 py-4">
                             <div class="flex items-center gap-4">
-                                <a href="{{ route('categories.edit' . $category) }}"
+                                <a href="{{ route('categories.edit', $category) }}"
                                     class="font-medium text-blue-700 hover:underline">Edit</a>
-                                <form action="{{ route('categories.destroy' . $category) }}" method="POST"
+                                <form action="{{ route('categories.destroy', $category) }}" method="POST"
                                     onsubmit="return confirm('Hapus data ini?')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="font-medium text-red-700 hover:underline">Hapus</button>
                                 </form>
                             </div>
-                        </td> --}}
+                        </td>
                     </tr>
                 @empty
                     <tr>

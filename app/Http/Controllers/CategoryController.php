@@ -52,7 +52,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $data = $request->validate([
-            'name' => 'required|string|max:255|unique:categories,name,' . $category->name,
+            'name' => 'required|string|max:255|unique:categories,name,' . $category->id,
             'description' => 'nullable|string|max:255',
         ]);
 
@@ -65,7 +65,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        if($category->item()->exists())
+        if($category->items()->exists())
             {
                 return redirect()->route('categories.index')->with('error', 'kategori tidak dapat dihapus karena memiliki barang aktif!');
             }
