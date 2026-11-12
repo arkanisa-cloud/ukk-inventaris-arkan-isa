@@ -11,7 +11,7 @@
 
         <div class="flex flex-col gap-2">
             <label class="text-sm font-medium text-slate-700" for="item_id">Stok Barang</label>
-            <select id="item_id" name="item_id"
+            <select id="item_id" name="item_id" required
                 class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm focus:outline-2 focus:outline-blue-600">
                 <option value="">Pilih Barang</option>
                 @foreach ($items as $item)
@@ -22,14 +22,14 @@
 
         <div class="flex flex-col gap-2">
             <label class="text-sm font-medium text-slate-700" for="quantity">Jumlah</label>
-            <input id="quantity" name="quantity" type="number" step="1"
+            <input id="quantity" name="quantity" type="number" step="1" required
                 value="{{ old('quantity', $item->quantity ?? '') }}"
                 class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm focus:outline-2 focus:outline-blue-600">
         </div>
 
         <div class="flex flex-col gap-2">
             <label class="text-sm font-medium text-slate-700" for="date">Tanggal</label>
-            <input id="date" name="date" type="date" value="{{ old('date', $stockIn->date ?? '') }}"
+            <input id="date" name="date" type="date" value="{{ old('date', $stockIn->date ?? '') }}" required
                 class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm focus:outline-2 focus:outline-blue-600">
         </div>
 

@@ -12,14 +12,14 @@
 
         <div class="flex flex-col gap-2">
             <label class="text-sm font-medium text-slate-700" for="name">Nama Kategori</label>
-            <input id="name" name="name" type="text" value="{{ old('name', $locations->name ?? '') }}" required
+            <input id="name" name="name" type="text" value="{{ old('name', $location->name ?? '') }}" required
                 class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm focus:outline-2 focus:outline-blue-600">
         </div>
 
         <div class="flex flex-col gap-2">
             <label class="text-sm font-medium text-slate-700" for="description">Deskripsi</label>
             <textarea id="description" name="description" rows="3"
-                class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm focus:outline-2 focus:outline-blue-600">{{ old('description', $locations->description ?? '') }}</textarea>
+                class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm focus:outline-2 focus:outline-blue-600">{{ old('description', $location->description ?? '') }}</textarea>
         </div>
 
         <div class="flex flex-wrap items-center gap-4">

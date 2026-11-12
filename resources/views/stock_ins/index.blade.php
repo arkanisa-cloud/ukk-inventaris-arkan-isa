@@ -26,7 +26,7 @@
                         <td class="px-5 py-4">{{ $stockIn->item->name }}</td>
                         <td class="px-5 py-4">{{ $stockIn->quantity }}</td>
                         <td class="px-5 py-4">{{ $stockIn->date }}</td>
-                        <td class="px-5 py-4">{{ $stockIn->description }}</td>
+                        <td class="px-5 py-4">{{ $stockIn->description ?? '-' }}</td>
                     </tr>
                 @empty
                     <tr>

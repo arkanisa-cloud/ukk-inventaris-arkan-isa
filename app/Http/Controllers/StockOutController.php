@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Item;
-use App\Models\StockIn;
 use App\Models\StockOut;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -52,12 +51,12 @@ class StockOutController extends Controller
         DB::transaction(function () use ($data) {
             $item = Item::lockForUpdate()->findOrFail($data['item_id']);
             if ($item->quantity < $data['quantity']) {
-                throw ValidationException::withMessages(['quantity' => 'stok tidak mencukupi']);
+                throw ValidationException::withMessages(['quantity' => 'stok tidak mencukupi.']);
             }
             $item->decrement('quantity', $data['quantity']);
             StockOut::create($data);
         });
 
-        return redirect()->route('stock-outs.index')->with('success', 'berhasil menambahkan stok!');
+        return redirect()->route('stock-outs.index')->with('success', 'berhasil menambahkan stok.');
     }
 }

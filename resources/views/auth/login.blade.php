@@ -12,6 +12,11 @@
     <main class="w-full max-w-sm rounded border border-gray-300 bg-white p-6">
         <h1 class="mb-4 text-2xl font-bold">Login</h1>
 
+        @if ($errors->any())
+            <p role="alert" class="rounded bg-red-100 p-3 text-red-800">{{ $errors->first() }}</p>
+        @endif
+
+
         <form action="{{ route('login') }}" method="POST" class="flex flex-col gap-4">
             @csrf
 

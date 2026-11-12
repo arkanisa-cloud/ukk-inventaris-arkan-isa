@@ -51,6 +51,6 @@ class StockInController extends Controller
             StockIn::create($data);
         });
 
-        return redirect()->route('stock-ins.index')->with('success', 'berhasil menambahkan stok!');
+        return redirect()->route('stock-ins.index')->with('success', 'berhasil menambahkan stok.');
     }
 }

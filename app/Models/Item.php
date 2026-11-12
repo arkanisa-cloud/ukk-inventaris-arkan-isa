@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Http\Controllers\StockInController;
-use App\Http\Controllers\StockOutController;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -25,11 +23,11 @@ class Item extends Model
     
     public function stockIns(): HasMany
     {
-        return $this->hasMany(StockInController::class);
+        return $this->hasMany(StockIn::class);
     }
 
     public function stockOuts(): HasMany
     {
-        return $this->hasMany(StockOutController::class);
+        return $this->hasMany(StockOut::class);
     }
 }

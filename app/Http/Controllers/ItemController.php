@@ -32,12 +32,12 @@ class ItemController extends Controller
 
         if ($request->filled('category_id')) {
             $categoryId = $request->input('category_id');
-            $$query->where('category_id', $categoryId);
+            $query->where('category_id', $categoryId);
         }
 
-        if ($request->filled('conditions')){
-            $conditions = $request->input('conditions');
-            $query->where('conditions', $conditions);
+        if ($request->filled('condition')){
+            $conditions = $request->input('condition');
+            $query->where('condition', $conditions);
         }
 
         $items = $query->get();
@@ -66,7 +66,7 @@ class ItemController extends Controller
             'name' => 'required|string|max:255|unique:items,name',
             'category_id' => 'required|integer|exists:categories,id',
             'location_id' => 'required|integer|exists:locations,id',
-            'conditions' => 'required|in:baik,rusak_ringan,rusak_berat'
+            'condition' => 'required|in:baik,rusak_ringan,rusak_berat'
         ]);
 
         DB::transaction(function () use($data) {
@@ -102,7 +102,7 @@ class ItemController extends Controller
             'name' => 'required|string|max:255|unique:items,name,' . $item->id,
             'category_id' => 'required|integer|exists:categories,id',
             'location_id' => 'required|integer|exists:locations,id',
-            'conditions' => 'required|in:baik,rusak_ringan,rusak_berat'
+            'condition' => 'required|in:baik,rusak_ringan,rusak_berat'
         ]);
 
         $item->update($data);
@@ -116,10 +116,10 @@ class ItemController extends Controller
     {
         if($item->stockIns()->exists() || $item->stockOuts()->exists())
             {
-                return redirect()->route('items.index')->with('error', 'Data barang tidak dapat dihapus karena memiliki riwayat stok!');
+                return redirect()->route('items.index')->with('error', 'Data barang tidak dapat dihapus karena memiliki riwayat stok.');
             }
 
         $item->delete();
-        return redirect()->route('items.index');
+        return redirect()->route('items.index')->with('success', 'Data barang berhasil dihapus.');
     }
 }

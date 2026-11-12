@@ -23,7 +23,7 @@
                     <tr class="border-t border-slate-100 hover:bg-slate-50">
                         <td class="px-5 py-4">{{ $location->id }}</td>
                         <td class="px-5 py-4">{{ $location->name }}</td>
-                        <td class="px-5 py-4">{{ $location->description }}</td>
+                        <td class="px-5 py-4">{{ $location->description ?? '-' }}</td>
                         <td class="px-5 py-4">
                             <div class="flex items-center gap-4">
                                 <a href="{{ route('locations.edit', $location) }}"

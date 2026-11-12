@@ -35,7 +35,7 @@ class CategoryController extends Controller
         ]);
 
         Category::create($data);
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index')->with('success', 'Data kategori berhasil ditambahkan.');
     }
 
     /**
@@ -57,7 +57,7 @@ class CategoryController extends Controller
         ]);
 
         $category->update($data);
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index')->with('success', 'Data kategori berhasil diperbarui.');
     }
 
     /**
@@ -67,10 +67,10 @@ class CategoryController extends Controller
     {
         if($category->items()->exists())
             {
-                return redirect()->route('categories.index')->with('error', 'kategori tidak dapat dihapus karena memiliki barang aktif!');
+                return redirect()->route('categories.index')->with('error', 'kategori tidak dapat dihapus karena memiliki barang aktif.');
             }
 
         $category->delete();
-        return redirect()->route('categories.index')->with('success', 'data kategori berhasil dihapus!');
+        return redirect()->route('categories.index')->with('success', 'Data kategori berhasil dihapus.');
     }
 }

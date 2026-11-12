@@ -17,7 +17,7 @@
             <a href="{{ route('items.index') }}" class="text-blue-700 hover:underline">Barang</a>
             <a href="{{ route('stock-ins.index') }}" class="text-blue-700 hover:underline">Stok Masuk</a>
             <a href="{{ route('stock-outs.index') }}" class="text-blue-700 hover:underline">Stok Keluar</a>
-            {{-- <a href="{{ route('reports.index') }}" class="text-blue-700 hover:underline">Rekap</a> --}}
+            <a href="{{ route('reports.index') }}" class="text-blue-700 hover:underline">Rekap</a>
         </nav>
     </header>
 

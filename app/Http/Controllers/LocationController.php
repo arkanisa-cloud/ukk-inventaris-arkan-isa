@@ -35,7 +35,7 @@ class LocationController extends Controller
         ]);
 
         Location::create($data);
-        return redirect()->route('locations.index');
+        return redirect()->route('locations.index')->with('success', 'Data lokasi berhasil ditambahkan.');
     }
 
     /**
@@ -52,12 +52,12 @@ class LocationController extends Controller
     public function update(Request $request, Location $location)
     {
         $data = $request->validate([
-            'name' => 'required|string|max:255|unique:locations,name,' . $location->name,
+            'name' => 'required|string|max:255|unique:locations,name,' . $location->id,
             'description' => 'nullable|string|max:255'
         ]);
 
         $location->update($data);
-        return redirect()->route('locations.index');
+        return redirect()->route('locations.index')->with('success','Data lokasi berhasil diperbarui.');
     }
 
     /**
@@ -67,11 +67,11 @@ class LocationController extends Controller
     {
         if($location->items()->exists())
             {
-                return redirect()->route('locations.index')->with('error', 'Data lokasi tidak dapat dihapus karena masih memiliki barang aktif!');
+                return redirect()->route('locations.index')->with('error', 'Data lokasi tidak dapat dihapus karena masih memiliki barang aktif.');
             }
 
         $location->delete();
-        return redirect()->route('locations.index');
+        return redirect()->route('locations.index')->with('success', 'Data lokasi berhasil dihapus.');
 
     }
 }

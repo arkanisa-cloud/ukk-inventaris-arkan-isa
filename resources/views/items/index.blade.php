@@ -25,13 +25,13 @@
             </select>
         </div>
         <div class="flex flex-col gap-2">
-            <label class="text-sm font-medium text-slate-700" for="conditions">Pilih Kondisi</label>
-            <select id="conditions" name="conditions"
+            <label class="text-sm font-medium text-slate-700" for="condition">Pilih Kondisi</label>
+            <select id="condition" name="condition"
                 class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm focus:outline-2 focus:outline-blue-600">
                 <option value="">Semua Kondisi</option>
-                <option value="baik" @selected(request('conditions') == 'baik')>Baik</option>
-                <option value="rusak_ringan" @selected(request('conditions') == 'rusak_ringan')>Rusak Ringan</option>
-                <option value="rusak_berat" @selected(request('conditions') == 'rusak_berat')>Rusak Berat</option>
+                <option value="baik" @selected(request('condition') == 'baik')>Baik</option>
+                <option value="rusak_ringan" @selected(request('condition') == 'rusak_ringan')>Rusak Ringan</option>
+                <option value="rusak_berat" @selected(request('condition') == 'rusak_berat')>Rusak Berat</option>
             </select>
         </div>
         <button type="submit"

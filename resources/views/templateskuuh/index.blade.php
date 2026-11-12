@@ -6,7 +6,8 @@
     <h1 class="text-2xl font-bold tracking-tight text-slate-900">Judul Halaman</h1>
 
     {{-- Ganti # dengan route tambah. --}}
-    <a href="#" class="self-start rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700">Tambah</a>
+    <a href="#"
+        class="self-start rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700">Tambah</a>
 
     {{-- Hapus pencarian jika tidak diperlukan; sesuaikan action dan tautan reset. --}}
     <form action="#" method="GET" class="flex flex-wrap items-end gap-3">
@@ -36,7 +37,8 @@
                 <option value="nilai_dua" @selected(request('enum_field') == 'nilai_dua')>Pilihan Dua</option>
             </select>
         </div>
-        <button type="submit" class="rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700">Terapkan</button>
+        <button type="submit"
+            class="rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700">Terapkan</button>
         <a href="#" class="px-4 py-2.5 text-sm font-medium text-slate-600 hover:text-blue-700">Reset</a>
     </form>
 

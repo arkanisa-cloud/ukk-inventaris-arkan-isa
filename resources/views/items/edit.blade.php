@@ -34,14 +34,14 @@
                 class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm focus:outline-2 focus:outline-blue-600">
                 <option value="">Pilih Lokasi</option>
                 @foreach ($locations as $location)
-                    <option value="{{ $location->id }}" @selected(old('locations_id', $category->id ?? '') == $location->id)>{{ $location->name }}</option>
+                    <option value="{{ $location->id }}" @selected(old('location_id', $location->id ?? '') == $location->id)>{{ $location->name }}</option>
                 @endforeach
             </select>
         </div>
 
         <div class="flex flex-col gap-2">
-            <label class="text-sm font-medium text-slate-700" for="conditions">Kondisi</label>
-            <select id="conditions" name="conditions"
+            <label class="text-sm font-medium text-slate-700" for="condition">Kondisi</label>
+            <select id="condition" name="condition"
                 class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm focus:outline-2 focus:outline-blue-600">
                 <option value="baik" @selected(old('condition', $item->condition ?? 'baik') == 'baik')>Baik</option>
                 <option value="rusak_ringan" @selected(old('condition', $item->condition ?? 'baik') == 'rusak_ringan')>Rusak Ringan</option>
