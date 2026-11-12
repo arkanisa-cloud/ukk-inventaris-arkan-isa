@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('code')->unique();
             $table->string('name');
-            $table->unsignedInteger('quantity');
+            $table->unsignedInteger('quantity')->default(0);
             $table->foreignId('category_id')->constrained()->restrictOnDelete();
             $table->foreignId('location_id')->constrained()->restrictOnDelete();
             $table->enum('condition', ['baik', 'rusak_ringan', 'rusak_berat']);

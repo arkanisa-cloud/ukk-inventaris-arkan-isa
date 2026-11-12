@@ -17,30 +17,30 @@
         </div>
 
         <div class="flex flex-col gap-2">
-            <label class="text-sm font-medium text-slate-700" for="categories">Kategori</label>
-            <select id="categories" name="categories"
+            <label class="text-sm font-medium text-slate-700" for="category_id">Kategori</label>
+            <select id="category_id" name="category_id"
                 class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm focus:outline-2 focus:outline-blue-600">
                 <option value="">Pilih Kategori</option>
                 @foreach ($categories as $category)
-                    <option value="{{ $category->id }}" @selected(old('category_id', $item->category_id ?? '') == $category->id)>{{ $category->name }}</option>
+                    <option value="{{ $category->id }}" @selected(old('category_id', $category->id ?? '') == $category->id)>{{ $category->name }}</option>
                 @endforeach
             </select>
         </div>
 
         <div class="flex flex-col gap-2">
-            <label class="text-sm font-medium text-slate-700" for="locations">Lokasi Penyimpanan</label>
-            <select id="locations" name="locations"
+            <label class="text-sm font-medium text-slate-700" for="location_id">Lokasi Penyimpanan</label>
+            <select id="location_id" name="location_id"
                 class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm focus:outline-2 focus:outline-blue-600">
                 <option value="">Pilih Lokasi</option>
                 @foreach ($locations as $location)
-                    <option value="{{ $location->id }}" @selected(old('locations_id', $item->location ?? '') == $location->id)>{{ $location->name }}</option>
+                    <option value="{{ $location->id }}" @selected(old('locations_id', $category->id ?? '') == $location->id)>{{ $location->name }}</option>
                 @endforeach
             </select>
         </div>
 
         <div class="flex flex-col gap-2">
-            <label class="text-sm font-medium text-slate-700" for="condition">Kondisi</label>
-            <select id="condition" name="condition"
+            <label class="text-sm font-medium text-slate-700" for="conditions">Kondisi</label>
+            <select id="conditions" name="conditions"
                 class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm focus:outline-2 focus:outline-blue-600">
                 <option value="baik" @selected(old('condition', $item->condition ?? 'baik') == 'baik')>Baik</option>
                 <option value="rusak_ringan" @selected(old('condition', $item->condition ?? 'baik') == 'rusak_ringan')>Rusak Ringan</option>

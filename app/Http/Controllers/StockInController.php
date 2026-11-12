@@ -17,11 +17,9 @@ class StockInController extends Controller
      */
     public function index()
     {
-        $items = Item::all();
-        $categories = Category::all();
-        $stockIn = StockIn::all();
+        $stockIns = StockIn::with('item')->get();
 
-        return view('stock_ins.index', compact('items', 'categories', 'stockIn'));
+        return view('stock_ins.index', compact('stockIns'));
     }
 
     /**
@@ -29,7 +27,10 @@ class StockInController extends Controller
      */
     public function create()
     {
-        return view('stock-ins.create');
+        $items = Item::all();
+        $stockIns = StockIn::all();
+        
+        return view('stock_ins.create', compact('items', 'stockIns'));
     }
 
     /**

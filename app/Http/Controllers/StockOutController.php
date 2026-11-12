@@ -20,9 +20,9 @@ class StockOutController extends Controller
     {
         $items = Item::all();
         $categories = Category::all();
-        $stockOut = StockOut::all();
+        $stockOuts = StockOut::all();
 
-        return view('stock_ins.index', compact('items', 'categories', 'stockOut'));
+        return view('stock_outs.index', compact('items', 'categories', 'stockOuts'));
     }
 
     /**
@@ -30,7 +30,10 @@ class StockOutController extends Controller
      */
     public function create()
     {
-        return view('stock_outs.index');
+        $items = Item::all();
+        $stockOuts = StockOut::all();
+
+        return view('stock_outs.create', compact('items', 'stockOuts'));
     }
 
     /**
@@ -47,14 +50,14 @@ class StockOutController extends Controller
         ]);
 
         DB::transaction(function () use ($data) {
-            $item = Item::lockForUpdate()->findOrFail('item_id', $data['item_id']);
+            $item = Item::lockForUpdate()->findOrFail($data['item_id']);
             if ($item->quantity < $data['quantity']) {
                 throw ValidationException::withMessages(['quantity' => 'stok tidak mencukupi']);
             }
             $item->decrement('quantity', $data['quantity']);
-            StockIn::create($data);
+            StockOut::create($data);
         });
 
-        return redirect()->route('stock-ins.index')->with('success', 'berhasil menambahkan stok!');
+        return redirect()->route('stock-outs.index')->with('success', 'berhasil menambahkan stok!');
     }
 }

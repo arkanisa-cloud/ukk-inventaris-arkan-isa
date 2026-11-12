@@ -17,8 +17,8 @@
 
             <div class="flex flex-col gap-2">
                 <label for="email">Email</label>
-                <input id="email" name="email" type="email" value="" required autocomplete="username"
-                    class="w-full rounded border border-gray-300 p-2">
+                <input id="email" name="email" type="email" value="{{ old('email') }}" required
+                    autocomplete="username" class="w-full rounded border border-gray-300 p-2">
             </div>
 
             <div class="flex flex-col gap-2">

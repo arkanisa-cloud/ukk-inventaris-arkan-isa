@@ -35,9 +35,9 @@ class ItemController extends Controller
             $$query->where('category_id', $categoryId);
         }
 
-        if ($request->filled('condition')){
-            $condition = $request->input('condition');
-            $query->where('condiion', $condition);
+        if ($request->filled('conditions')){
+            $conditions = $request->input('conditions');
+            $query->where('conditions', $conditions);
         }
 
         $items = $query->get();
@@ -61,11 +61,12 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
+        
         $data = $request->validate([
             'name' => 'required|string|max:255|unique:items,name',
             'category_id' => 'required|integer|exists:categories,id',
             'location_id' => 'required|integer|exists:locations,id',
-            'condition' => 'required|in:baik,rusak_ringan,rusak_berat'
+            'conditions' => 'required|in:baik,rusak_ringan,rusak_berat'
         ]);
 
         DB::transaction(function () use($data) {
@@ -86,7 +87,10 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        return view('items.edit', compact('item'));
+        $categories = Category::all();
+        $locations = Location::all();
+
+        return view('items.edit', compact('item', 'categories', 'locations'));
     }
 
     /**
@@ -97,8 +101,8 @@ class ItemController extends Controller
         $data = $request->validate([
             'name' => 'required|string|max:255|unique:items,name,' . $item->id,
             'category_id' => 'required|integer|exists:categories,id',
-            'location_id' => 'required|integer|exists:location,id',
-            'condition' => 'required|in:baik,rusak_ringan,rusak_berat'
+            'location_id' => 'required|integer|exists:locations,id',
+            'conditions' => 'required|in:baik,rusak_ringan,rusak_berat'
         ]);
 
         $item->update($data);
@@ -110,7 +114,7 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-        if($item->stockIn()->exists() || $item->stockOut()->exists())
+        if($item->stockIns()->exists() || $item->stockOuts()->exists())
             {
                 return redirect()->route('items.index')->with('error', 'Data barang tidak dapat dihapus karena memiliki riwayat stok!');
             }

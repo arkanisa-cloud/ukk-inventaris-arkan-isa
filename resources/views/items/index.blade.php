@@ -15,12 +15,12 @@
                 class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm focus:outline-2 focus:outline-blue-600">
         </div>
         <div class="flex flex-col gap-2">
-            <label class="text-sm font-medium text-slate-700" for="categories">Pilih Kategori</label>
-            <select id="categories" name="categories"
+            <label class="text-sm font-medium text-slate-700" for="category_id">Pilih Kategori</label>
+            <select id="category_id" name="category_id"
                 class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm focus:outline-2 focus:outline-blue-600">
                 <option value="">Semua Kategori</option>
                 @foreach ($categories as $category)
-                    <option value="{{ $category->id }}" @selected(request('categories') == $category->id)>{{ $category->name }}</option>
+                    <option value="{{ $category->id }}" @selected(request('category_id') == $category->id)>{{ $category->name }}</option>
                 @endforeach
             </select>
         </div>
@@ -44,7 +44,7 @@
         <table class="w-full text-left text-sm">
             <thead class="bg-slate-100 text-xs uppercase tracking-wide text-slate-600">
                 <tr>
-                    <th scope="col" class="px-5 py-4">Code</th>
+                    <th scope="col" class="px-5 py-4">Kode Barang</th>
                     <th scope="col" class="px-5 py-4">Nama</th>
                     <th scope="col" class="px-5 py-4">Jumlah</th>
                     <th scope="col" class="px-5 py-4">Kategori</th>
@@ -56,12 +56,12 @@
             <tbody>
                 @forelse ($items as $item)
                     <tr class="border-t border-slate-100 hover:bg-slate-50">
-                        <td class="px-5 py-4">{{ $items->code }}</td>
-                        <td class="px-5 py-4">{{ $items->nama }}</td>
-                        <td class="px-5 py-4">{{ $items->quantity }}</td>
-                        <td class="px-5 py-4">{{ $items->category->name }}</td>
-                        <td class="px-5 py-4">{{ $items->location->name }}</td>
-                        <td class="px-5 py-4">{{ $items->condition }}</td>
+                        <td class="px-5 py-4">{{ $item->code }}</td>
+                        <td class="px-5 py-4">{{ $item->name }}</td>
+                        <td class="px-5 py-4">{{ $item->quantity }}</td>
+                        <td class="px-5 py-4">{{ $item->category->name }}</td>
+                        <td class="px-5 py-4">{{ $item->location->name }}</td>
+                        <td class="px-5 py-4">{{ $item->condition }}</td>
                         <td class="px-5 py-4">
                             <div class="flex items-center gap-4">
                                 <a href="{{ route('items.edit', $item) }}"
